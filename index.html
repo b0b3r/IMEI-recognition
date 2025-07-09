@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMEI Scanner</title>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:disabled {
+            background: #cccccc;
+        }
+        #preview {
+            max-width: 300px;
+            margin: 20px auto;
+            display: none;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #28a745;
+        }
+        .instructions {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Получить IMEI</h1>
+    
+    <div class="instructions">
+        <h3>Как сделать скриншот IMEI:</h3>
+        <ul>
+            <li><strong>Android:</strong> Нажмите <kbd>Power</kbd> + <kbd>Volume Down</kbd></li>
+            <li><strong>iPhone:</strong> Нажмите <kbd>Power</kbd> + <kbd>Volume Up</kbd></li>
+        </ul>
+    </div>
+
+    <button id="showIMEI" onclick="showIMEIInstructions()">Показать IMEI</button>
+    
+    <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
+    <button id="uploadBtn" onclick="document.getElementById('fileInput').click()" disabled>Загрузить скриншот</button>
+    
+    <div>
+        <img id="preview" alt="Предпросмотр скриншота">
+    </div>
+    
+    <div id="result"></div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
